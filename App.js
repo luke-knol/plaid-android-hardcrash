@@ -16,13 +16,7 @@ import {
   StatusBar,
 } from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import PlaidLink from 'react-native-plaid-link-sdk';
 
 const App = () => {
@@ -30,59 +24,24 @@ const App = () => {
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
+        <ScrollView contentInsetAdjustmentBehavior="automatic">
           <View style={styles.body}>
-            <PlaidLink
-              publicKey="a4b52619202472b132ee1c0299bb15"
-              clientName="RaiseRight"
-              product={['auth']}
-              userEmailAddress="umbla.pofta@gmail.com"
-              userPhoneNumber="6166443918"
-              userLegalName="Luke Knol"
-              onSuccess={resp => {
-                console.warn('onSuccess', resp);
-              }}
-              onExit={resp => {
-                console.warn('onExit', resp);
-              }}
-              env="production">
-              <Text>Link Account</Text>
-            </PlaidLink>
-
-            {/* <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
+              <PlaidLink
+                publicKey="a4b52619202472b132ee1c0299bb15"
+                clientName="RaiseRight"
+                product={['auth']}
+                userEmailAddress="test.email@email.com"
+                userPhoneNumber="555-555-5555"
+                userLegalName="New User"
+                language="en"
+                countryCodes={['US']}
+                onSuccess={() => {}}
+                onExit={() => {}}
+                env="sandbox">
+                <Text>Launch Plaid</Text>
+              </PlaidLink>
             </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks /> */}
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -91,41 +50,10 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
   body: {
+    padding: 20,
     backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+    alignItems: 'center',
   },
 });
 
